@@ -1,0 +1,13 @@
+<h1>
+  {{title}}
+</h1>
+<select (change)="onSelectionChange($event)">  
+  <option *ngFor="let f of films" value="{{f.id}}">{{f.id}}{{f.titre}}{{f.resume}}</option>
+</select>
+<hr/>
+<div *ngIf="sF">
+  id : {{sF.id}} <br/>
+  titre: <input type="text" [(ngModel)] = "sF.titre" />
+  resume: <input type="text" [(ngModel)] = "sF.resume" />
+  <button (click)="onUpdateFilm()" >update</button>
+</div>

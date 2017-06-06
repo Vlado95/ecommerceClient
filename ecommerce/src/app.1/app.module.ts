@@ -9,7 +9,6 @@ import {FilmService} from './services/film.service';
 
 import { FilmModule} from "./film/film.module";
 
-
 @NgModule({
   declarations: [
     AppComponent
