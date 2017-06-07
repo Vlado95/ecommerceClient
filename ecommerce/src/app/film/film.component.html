@@ -1,38 +1,39 @@
 <br>
-<div class="panel" role="search">
+<!--<div class="panel" role="search">
   <div class="form-group">
     <input #listFilter (keyup)="0" class="form-control" placeholder="Search">
   </div>
-</div>
-
-  <div  *ngFor="let f of films">
-        <div class="panel panel-default animated">
-        <div class="panel-heading">
-            <span>Titre :{{f.titre}}</span>
-        </div>
-        <div class="panel-body">
-            <p>Resume: <span>{{ f.resume }}</span></p>
-            <div> 
-                <button  class="btn btn-primary">Ajouter dans le panier</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<!--<h1>
-  {{title}}
-</h1>
-<select (change)="onSelectionChange($event)">  
-  <option *ngFor="let f of films" value="{{f.id}}">{{f.id}}{{f.titre}}{{f.resume}}</option>
-</select>
-<hr/>
-<div *ngIf="sF">
-  id : {{sF.id}} <br/>
-  titre: <input type="text" [(ngModel)] = "sF.titre" />
-  resume: <input type="text" [(ngModel)] = "sF.resume" />
-  <button (click)="onUpdateFilm()" >update</button>
 </div>-->
+
+<div class="row">
+  <div  *ngFor="let f of films">
+                      <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x320" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">${{f.prix}}</h4>
+                                <h4>{{f.titre}}</h4>
+                                <!--<p><a href="#"  >Détail</a></p>-->
+                                <button  class="btn btn-primary"(click)="onDetailFilm(f)">Detail</button>
+                                <p><a routerLink="['/detail', f.id ]">detail</a></p>
+                               <!--<p> <a routerLink="['/detail', f.id ]" (click)="onDetailFilm(f)"> vers yy </a></p>-->
+                                <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                            </div>
+
+                        </div>
+                        <div> 
+                            <button  class="btn btn-primary">Ajouter dans le panier</button>
+                        </div>
+                    </div>
+</div>
+
+</div>

@@ -8,7 +8,11 @@ import { AppComponent } from './app.component';
 import {FilmService} from './services/film.service';
 
 import { FilmModule} from "./film/film.module";
-import { AppRoutingModule } from "app/services/app-routing.module";
+import { AppRoutingModule } from "./services/app-routing.module";
+import { HeaderModule } from "./header/header.module";
+import { NavModule } from "./nav/nav.module";
+import { DetailModule } from "app/film/detail.module";
+import { DetailService } from "app/services/detail.service";
 
 
 @NgModule({
@@ -20,9 +24,13 @@ import { AppRoutingModule } from "app/services/app-routing.module";
     FormsModule,
     HttpModule,
     FilmModule,
+    DetailModule,
+    HeaderModule,
+    NavModule,
     AppRoutingModule
   ],
-  providers: [FilmService],
+  providers: [FilmService,
+            DetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

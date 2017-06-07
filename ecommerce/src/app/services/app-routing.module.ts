@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 // import { FilmComponent } from "app/Film.component";
 // import { ItemComponent } from "app/item.component";
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, ActivatedRoute  } from '@angular/router';
 import { FilmComponent } from "app/film/film.component";
+import { DetailComponent } from "app/film/detail.component";
 
 export const appRoutes: Routes = [
     {path: '', redirectTo: 'list', pathMatch: 'full'},
     {path: 'list', component: FilmComponent},
-    // {path: 'form', component: ItemformComponent}
+    {path: 'detail/:idFilm', component: DetailComponent}
 ]
 @NgModule({
   imports: [
@@ -17,4 +18,9 @@ export const appRoutes: Routes = [
       RouterModule
   ]
 })
-export class AppRoutingModule { }
+
+
+
+export class AppRoutingModule {
+
+}
