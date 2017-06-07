@@ -1,4 +1,29 @@
-<h1>
+<br>
+<div class="panel" role="search">
+  <div class="form-group">
+    <input #listFilter (keyup)="0" class="form-control" placeholder="Search">
+  </div>
+</div>
+
+  <div  *ngFor="let f of films">
+        <div class="panel panel-default animated">
+        <div class="panel-heading">
+            <span>Titre :{{f.titre}}</span>
+        </div>
+        <div class="panel-body">
+            <p>Resume: <span>{{ f.resume }}</span></p>
+            <div> 
+                <button  class="btn btn-primary">Ajouter dans le panier</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<h1>
   {{title}}
 </h1>
 <select (change)="onSelectionChange($event)">  
@@ -10,4 +35,4 @@
   titre: <input type="text" [(ngModel)] = "sF.titre" />
   resume: <input type="text" [(ngModel)] = "sF.resume" />
   <button (click)="onUpdateFilm()" >update</button>
-</div>
+</div>-->

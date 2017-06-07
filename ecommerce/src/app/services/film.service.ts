@@ -15,10 +15,6 @@ export class FilmService {
      private listeFilms : Film[]; // jeux de données (simulation)
 
      constructor(private _http : Http){
-        //  this.listeFilms = [
-        //      {"id":1, "titre": "therieur", "resume":"alain"},
-        //      {"id":2, "titre": "therieur", "resume":"alain"}
-        //  ]
      }
      public rechercherFilms(): Observable<Film[]>{
        // return Observable.of(this.listeFilms); // données simulées 
