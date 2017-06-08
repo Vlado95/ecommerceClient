@@ -14,14 +14,6 @@ export class FilmComponent {
   films :Film[];
   sF : Film; 
   selectedID : number;
- public onDetailFilm(sA : Film) : void {
-    let selecteId = sA.id;
-    //this.selectedID = sA.id;
-    console.log("selectedId: "+selecteId);
-    let link = ['/detail', selecteId];
-   this._router.navigate( link );
-  //  this._router.navigateByUrl(`/detail/${this.selectedID}`);
- }
   constructor(private _filmService : FilmService, private _detailService : DetailService, private _router : Router){
   }
 

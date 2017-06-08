@@ -7,30 +7,36 @@ import { AppComponent } from './app.component';
 
 import {FilmService} from './services/film.service';
 
-import { FilmModule} from "./film/film.module";
-import { AppRoutingModule } from "./services/app-routing.module";
-import { HeaderModule } from "./header/header.module";
-import { NavModule } from "./nav/nav.module";
-import { DetailModule } from "app/film/detail.module";
+import { AppRoutingModule } from "./app-routing.module";
 import { DetailService } from "app/services/detail.service";
+import { HeaderComponent } from "app/header/header.component";
+import { NavComponent } from "app/nav/nav.component";
+import { FilmComponent } from "app/film/film.component";
+import { DetailComponent } from "app/film/detail.component";
+import { PanierComponent } from "app/panier/panier.component";
+import { OtherComponent } from "app/other.component";
+import { PanierService } from "app/services/panier.service";
+import { CommonService } from "app/services/common.servce";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    NavComponent,
+    FilmComponent,
+    DetailComponent,
+    PanierComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    FilmModule,
-    DetailModule,
-    HeaderModule,
-    NavModule,
     AppRoutingModule
   ],
   providers: [FilmService,
-            DetailService],
+            DetailService, PanierService , CommonService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

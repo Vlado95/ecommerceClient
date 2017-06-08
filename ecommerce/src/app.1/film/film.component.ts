@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Film } from "../model/film";
 import { FilmService } from "../services/film.service";
+import { DetailService } from "app/services/detail.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-film',
@@ -8,32 +10,11 @@ import { FilmService } from "../services/film.service";
   styleUrls: ['./film.component.css']
 })
 export class FilmComponent {
-  title = 'film';
+  title = 'Film';
   films :Film[];
-  sF : Film; // film selectioné via liste déroulante
-  //filmMisAjour : film; //film mis à jour
-
-  public onSelectionChange(event:any) : void{
-        //envent.???
-        let
-         selecteId = event.target.value;
-         for (let f of this.films){
-           if(f.id == selecteId){
-             this.sF = f; 
-             break;
-           }
-         }
-  }
-
- /**
-  * onUpdatefilm
-  */
- public onUpdateFilm() : void {
-   this._filmService.majFilm(this.sF)
-   .subscribe(filmMisAjour =>console.log("film mis a jour  " +filmMisAjour.titre+ " "+filmMisAjour.resume));
- }
-  constructor(private _filmService : FilmService){
-    // _filmService est injecté ici via angular
+  sF : Film; 
+  selectedID : number;
+  constructor(private _filmService : FilmService, private _detailService : DetailService, private _router : Router){
   }
 
   ngOnInit(): void {

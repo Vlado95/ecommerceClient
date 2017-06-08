@@ -5,11 +5,12 @@ export class Film {
     resume : string;
     langue : string;
     duree : string;
-  //  idGenre : number;
-  //  idRealisateur : number;
+//    idGenre : number;
+//    idRealisateur : number;
     publics : string;
     origine : string;
     format : string;
+    affiche : string;
     quantite : number;
     prix : number;
 
@@ -22,6 +23,7 @@ export class Film {
                 publics : string="?",
                 origine : string="?",
                 format : string="?",
+                affiche : string="?",
                 quantite : number=0,
                     prix : number=0){
                     this.id = id;
@@ -33,6 +35,7 @@ export class Film {
                     this.publics = publics;
                     this.quantite = quantite;
                     this.format =format;
+                    this.affiche =affiche;
                     this.prix= prix;
 
                 }
