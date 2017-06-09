@@ -61,7 +61,13 @@ public onAddPanier(f:Film) : void{
     this.paniers.push(this.panier);
   this.listeFilmsRef2.push(this.sF);
 
-      console.log("ajouter dans le panier i"+this.i);
+
+//    localStorage.setItem("listePaniers",JSON.stringify(this.paniers))
+// let ListPANs : string= localStorage.getItem("listePaniers") ;
+//      //  console.log("à l'ajour "+JSON.parse(ListPANs).films);
+//        console.log("à l'ajour "+ListPANs.lastIndexOf("Baby Boss"));
+//       console.log("ajouter dans le panier i"+this.i);
+    //  arr.map(function(row) { return stringle(row); });
   });
      
 

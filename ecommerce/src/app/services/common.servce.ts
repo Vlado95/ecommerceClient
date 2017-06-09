@@ -6,7 +6,8 @@ import { Film } from "app/model/film";
 
 @Injectable()
 export class CommonService{
-
+public listePaniers : Panier[];
+ 
     //predifined in browser (like console) :
     //localStorage: Storage;//.removeItem(key) , .getItem(key) .setItem(key,value) , .length 
 
@@ -24,6 +25,8 @@ export class CommonService{
     //      // this.listeFilmsbSubject.next(filmAsStringInLocalStorage)
     //    }
         this.listeFilmsbSubject.subscribe(b=>localStorage.setItem("listeFilms",b.toString()));
-        this.listePanierbSubject.subscribe(b=>localStorage.setItem("listePaniers",b.toString()))
+        this.listePanierbSubject.subscribe(b=>localStorage.setItem("listePaniers",JSON.stringify(b)));
+
+       console.log("à l'ajour "+localStorage.getItem("listePaniers"));
    }                                                
 }
