@@ -10,25 +10,19 @@ export class CommonService{
     //predifined in browser (like console) :
     //localStorage: Storage;//.removeItem(key) , .getItem(key) .setItem(key,value) , .length 
 
-    public onOffbSubject :BehaviorSubject<boolean>
-             = new BehaviorSubject(false);
-
-   public messagebSubject :BehaviorSubject<string>
-             = new BehaviorSubject("initial-message");  
-
-   public listeAuteursbSubject :BehaviorSubject<Panier[]>
-             = new BehaviorSubject([]);   
-
 
     public listeFilmsbSubject :BehaviorSubject<Film[]>
-             = new BehaviorSubject([]);   
+             = new BehaviorSubject([]);  
+
+    // public listePanierbSubject :BehaviorSubject<Panier[]>
+    //          = new BehaviorSubject([]);  
 
    constructor(){
-       let onOffAsStringInLocalStorage = localStorage.getItem("onOff");
-       if(onOffAsStringInLocalStorage){
-          console.log("onOffAsStringInLocalStorage:"+onOffAsStringInLocalStorage);
-          this.onOffbSubject.next(onOffAsStringInLocalStorage == 'true')
-       }
-       this.onOffbSubject.subscribe(b=>localStorage.setItem("onOff",b.toString()))
+    //    let filmAsStringInLocalStorage = localStorage.getItem("listeFilms");
+    //    if(filmAsStringInLocalStorage){
+    //       console.log("onOffAsStringInLocalStorage:"+filmAsStringInLocalStorage);
+    //      // this.listeFilmsbSubject.next(filmAsStringInLocalStorage)
+    //    }
+    //    this.listeFilmsbSubject.subscribe(b=>localStorage.setItem("listeFilms",b.toString()))
    }                                                
 }

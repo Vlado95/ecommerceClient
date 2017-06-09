@@ -1,13 +1,16 @@
-export class Panier {
-  id : number;
-  nom : string;
-  prenom : string;
+import { Film } from "app/model/film";
 
-  constructor(id : number = 0,
-             nom : string = "?",
-             prenom : string = "?") {
-   this.id=id;
-   this.nom = nom;
-   this.prenom = prenom;
+export class Panier {
+
+  public film: Film;
+  public quantite : number;
+  public prix : number;
+
+  constructor( film: Film ,
+   quantite : number =0,
+   prix : number =0) {
+     this.film=film;
+     this.prix = prix;
+     this.quantite;
   }
 }
