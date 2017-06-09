@@ -35,7 +35,8 @@ i : number =0;
     this._filmService.rechercherFilms()
     .subscribe(listeFil => {this.films= listeFil;
                             if(this.films.length >=1)
-                               this.sF = this.films[0] },
+                               this.sF = this.films[0] 
+                            },
                  e=> console.log(e.message));
         console.log("...update....");
     
@@ -59,6 +60,7 @@ public onAddPanier(f:Film) : void{
       this.panier =new Panier(this.sF,1, this.sF.prix);
     this.paniers.push(this.panier);
   this.listeFilmsRef2.push(this.sF);
+
       console.log("ajouter dans le panier i"+this.i);
   });
      
@@ -67,45 +69,4 @@ public onAddPanier(f:Film) : void{
 }
 
 }
-
-
-
-
-
-// var myArray = [
-//   { "name": "Apple", "total": 16, "applicable": 21 },
-//   { "name": "Cherry", "total": 12, "applicable": 27 },
-//   { "name": "Plum", "total": 14, "applicable": 21 },
-//   { "name": "Apple", "total": 16, "applicable": 21 },
-//   { "name": "Cherry", "total": 12, "applicable": 27 },
-//   { "name": "Plum", "total": 14, "applicable": 21 },
-//   { "name": "Banana", "total": 14, "applicable": 21 },
-// ];
-
-// var res = {};
-  
-// // add keys for loopable integers which will be summed   
-// var loopables = Object.keys(myArray[0]).filter(function (key) {
-//   return Number.isInteger(myArray[0][key]);
-// });
-
-// res = Object.keys(myArray.reduce(function (res, item) {
-//   if (res[item.name]) {
-//     loopables.forEach(function (loopableKey) {
-//       res[item.name][loopableKey] += item[loopableKey];
-//     });
-    
-//   }
-//   else {
-//     res[item.name] = item;
-//   }
-//   return res; 
-// }, res)).map(function(key) {
-//   return res[key];
-// });
-// console.log(res);
-
-
-
-
 

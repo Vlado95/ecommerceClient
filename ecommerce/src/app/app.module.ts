@@ -17,6 +17,7 @@ import { PanierComponent } from "app/panier/panier.component";
 import { OtherComponent } from "app/other.component";
 import { PanierService } from "app/services/panier.service";
 import { CommonService } from "app/services/common.servce";
+import { CategorieService } from "app/services/categorie.service";
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { CommonService } from "app/services/common.servce";
     AppRoutingModule
   ],
   providers: [FilmService,
-            DetailService, PanierService , CommonService ],
+            DetailService, PanierService , CommonService, CategorieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
