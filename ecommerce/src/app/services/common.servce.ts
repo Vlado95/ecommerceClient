@@ -14,8 +14,8 @@ export class CommonService{
     public listeFilmsbSubject :BehaviorSubject<Film[]>
              = new BehaviorSubject([]);  
 
-    // public listePanierbSubject :BehaviorSubject<Panier[]>
-    //          = new BehaviorSubject([]);  
+    public listePanierbSubject :BehaviorSubject<Panier[]>
+             = new BehaviorSubject([]);  
 
    constructor(){
     //    let filmAsStringInLocalStorage = localStorage.getItem("listeFilms");
@@ -23,6 +23,7 @@ export class CommonService{
     //       console.log("onOffAsStringInLocalStorage:"+filmAsStringInLocalStorage);
     //      // this.listeFilmsbSubject.next(filmAsStringInLocalStorage)
     //    }
-    //    this.listeFilmsbSubject.subscribe(b=>localStorage.setItem("listeFilms",b.toString()))
+        this.listeFilmsbSubject.subscribe(b=>localStorage.setItem("listeFilms",b.toString()));
+        this.listePanierbSubject.subscribe(b=>localStorage.setItem("listePaniers",b.toString()))
    }                                                
 }

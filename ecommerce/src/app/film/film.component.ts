@@ -24,7 +24,7 @@ export class FilmComponent {
   public listeFilmsRef2 : Film[];
    sP : Film;
 
-
+i : number =0;
 
 
   selectedID : number;
@@ -42,7 +42,10 @@ export class FilmComponent {
     // panieer
     this._commonService.listeFilmsbSubject.subscribe(
           listeFilms => {this.listeFilmsRef2=listeFilms;
-
+          });
+          
+        this._commonService.listePanierbSubject.subscribe(
+          listePaniers => {this.paniers=listePaniers;
             });
 
  }
@@ -50,26 +53,18 @@ export class FilmComponent {
 
 //panier
 public onAddPanier(f:Film) : void{
+  this.i++;
   this._detailService.rechercherFilmId(f.id)
     .subscribe(selectedFil => {this.sF= selectedFil; 
-    // this.panier.film=selectedFil;
-    // this.panier.quantite=1;
-    // this.panier.prix=selectedFil.prix});
-   // this.paniers.push(this.panier);
+      this.panier =new Panier(this.sF,1, this.sF.prix);
+    this.paniers.push(this.panier);
   this.listeFilmsRef2.push(this.sF);
+      console.log("ajouter dans le panier i"+this.i);
+  });
+     
+
 
 }
-
-
-
-//panier
-// public onAddPanier(f:Film) : void{
-//   this._detailService.rechercherFilmId(f.id)
-//     .subscribe(selectedFil => {this.sF= selectedFil });
-//   this.listeFilmsRef2.push(this.sF);
-
-// }
-
 
 }
 

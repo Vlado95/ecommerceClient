@@ -24,9 +24,10 @@ ngOnInit(): void {
       this._commonService.listeFilmsbSubject.subscribe(
           listeFilms => {this.listeFilmsRef1=listeFilms;
           });
-      // this._commonService.listePanierbSubject.subscribe(
-      //   listPaniers => {this.paniers2 = listPaniers;
-      //   } )     
+      this._commonService.listePanierbSubject.subscribe(
+        listPaniers => {this.paniers2 = listPaniers;
+        } ) 
+        console.log("panier :"+this.paniers2.forEach) ;   
         
     }
 
