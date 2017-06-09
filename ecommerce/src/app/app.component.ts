@@ -5,6 +5,8 @@ import { Panier } from "app/model/panier";
 import { PanierService } from "app/services/panier.service";
 import { CommonService } from "app/services/common.servce";
 import { DetailService } from "app/services/detail.service";
+import { CategorieService } from "app/services/categorie.service";
+import { Categorie } from "app/model/categorie";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,12 @@ export class AppComponent implements OnInit{
   sF : Film; 
   title = 'app works!';
 
-constructor(private _filmService : FilmService, 
+  categories : Categorie[];
+      sC : Categorie; 
+
+
+constructor(private _filmService : FilmService,
+            private _categorieService : CategorieService,
             private _commonService : CommonService, private _detailService : DetailService){
     // _filmService est injecté ici via angular
   }
@@ -32,8 +39,16 @@ constructor(private _filmService : FilmService,
                                this.sF = this.films[0] },
                  e=> console.log(e.message));
         console.log("...update....");
-     }
-
+     
+   this._categorieService.rechercherListeCategories()
+        .subscribe( listeCat => {this.categories = listeCat;
+                                 if(this.categories.length >=1)
+                                     this.sC = this.categories[0]; 
+                                }, 
+                    e => console.log(e.message));
+  }
 }
+
+
 
 
