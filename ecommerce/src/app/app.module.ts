@@ -25,7 +25,9 @@ import { FilmsGenreComponent } from "app/film/filmsGenre.component";
 import { FilmsTitreComponent } from "app/film/filmsTitre.component";
 import { FilmsActeurComponent } from "app/film/filmsActeur.component";
 import { TitlePipe } from "app/pipes/title.filter";
-
+import { PaiementComponent } from "app/paiement/paiement.component";
+import { FooterComponent } from "app/footer/footer.component";
+import { AccueilComponent } from "app/header/accueil.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { TitlePipe } from "app/pipes/title.filter";
     FilmsGenreComponent,
     FilmsTitreComponent,
     FilmsActeurComponent,
-    TitlePipe
+    TitlePipe,
+    PaiementComponent,
+    FooterComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
