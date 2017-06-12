@@ -17,7 +17,7 @@ public lignePanier : Panier;
 public ligneFilm : Film;
 
 filmIn: boolean= true;
-public lignecomandes: Map< number, Panier >;
+//public lignecomandes: Map< number, Panier >;
 
 public 
     public listeFilmsbSubject :BehaviorSubject<Film[]>
@@ -26,7 +26,7 @@ public
     public listePanierbSubject :BehaviorSubject<Panier[]>
              = new BehaviorSubject([]);  
 
-   
+   /*
 public storyInPanier(paniers:Panier[],film:Film) {
   for (var i = 0; i < paniers.length; i++) {
     if (paniers[i].film.id === film.id) {
@@ -46,38 +46,57 @@ public  storyInPanier2(filmsPanier:Panier[]){
 
   }
   return this.total;
-}
+}*/
 
  
 
  public addItem(film : Film) : void {
-    // localStorage.removeItem('lcmd');
-      this.listePaniers  = JSON.parse(localStorage.getItem('lcmd'));
+  //  localStorage.removeItem('lcmd');
+     // this.listePaniers  = JSON.parse(localStorage.getItem('lcmd'));
 
-     if( this.listePaniers ==null){
-        this.listePaniers  =  new Array<Panier>();
-            this.listePaniers.push(new Panier(film,1,film.prix));
-            console.log("je suis passe panier no trouve"+film.titre)
-		}
-           this.listePaniers.forEach(lc=>{ 
+     if(this.listePaniers && this.listePaniers.length >=1 ){
+
+       this.listePaniers.forEach(lc=>{ 
                if(lc.film.id == film.id){
                 lc.quantite  += 1;
                 lc.prix = lc.quantite*film.prix;
                 this.filmIn=false;
+                //this.listePaniers[this.listePaniers.indexOf(lc)]=lc;
+                 console.log("index du panier ajouter"+  this.listePaniers.indexOf(lc))
               console.log("jproduit no exixtantt"+ lc.quantite+"; price"+ lc.prix)
+              this.listePanierbSubject.next(this.listePaniers);
            }
 			
         })
-        
-        if(this.filmIn==false){
-                  this.listePaniers.push(new Panier(film,1,film.prix));
-                  console.log("je suis passe panier trouve quantite du produit"+ film.titre)
+
+
+        if(this.filmIn!=false){
+            let p = new Panier(film,1,film.prix);
+                  this.listePaniers.push(p);
+                  console.log("quantite de panier au premier ajout"+ p.quantite)
+                  this.listePanierbSubject.next(this.listePaniers);
               
         }
 
-    localStorage.setItem('lcmd', JSON.stringify(this.listePaniers));
-    console.log("je viens de sovegarde le panier trouve"+JSON.stringify(this.listePaniers))
+		}else{
+
+        this.listePaniers  =  new Array<Panier>();
+        let p =new Panier(film,1,film.prix)
+            this.listePaniers.push(p);
+            this.listePanierbSubject.next(this.listePaniers);
+            console.log("je suis passe panier no trouve"+film.titre);
+            console.log("quant le pnier est vide"+ p.quantite+"; price"+ p.prix)
+        }
+
 	}
+
+
+
+
+
+
+
+    
 
 
     public getItems(paniers : Panier[]) {
@@ -99,11 +118,30 @@ public  storyInPanier2(filmsPanier:Panier[]){
 	}
 
 	public  deleteItem(idFilm:number) : void {
-		this.lignecomandes.delete(idFilm);
+		//this.lignecomandes.delete(idFilm);
 	}
 
 
-   constructor(){                                               
+  public videPanie(){
+      this.listePanierbSubject.subscribe(lignePaniers=>localStorage.removeItem('lcmd'))
+    }
+//this.onClientConnecte.subscribe(clientOK=>{localStorage.setItem("clientOk", JSON.stringify(clientOK))
+
+   constructor(){ 
+       let panierReluDansStorage  ;
+       try{
+       panierReluDansStorage =  JSON.parse(localStorage.getItem('lcmd'));
+    }
+    catch(e){ console.log("erreur relecture panier dans storage:" +e);
+    }
+       if(panierReluDansStorage){
+         this.listePanierbSubject.next(panierReluDansStorage) ;   
+       }
+
+       //this.listePanierbSubject.next(this.listePaniers)  ; [] par defaut
+       this.listePanierbSubject.subscribe(paniers=>{
+           localStorage.setItem('lcmd',JSON.stringify(paniers));
+           this.listePaniers =paniers;})                                            
 }
 
 }

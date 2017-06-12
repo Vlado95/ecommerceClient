@@ -24,6 +24,7 @@ import { AuthentificationComponent } from "app/client/login.component";
 import { FilmsGenreComponent } from "app/film/filmsGenre.component";
 import { FilmsTitreComponent } from "app/film/filmsTitre.component";
 import { FilmsActeurComponent } from "app/film/filmsActeur.component";
+import { TitlePipe } from "app/pipes/title.filter";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { FilmsActeurComponent } from "app/film/filmsActeur.component";
     AuthentificationComponent,
     FilmsGenreComponent,
     FilmsTitreComponent,
-    FilmsActeurComponent
+    FilmsActeurComponent,
+    TitlePipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,11 @@ import { FilmsActeurComponent } from "app/film/filmsActeur.component";
     AppRoutingModule
   ],
   providers: [FilmService,
-            DetailService, PanierService, CategorieService ,ClientService],
+            DetailService, 
+            PanierService,
+            CategorieService ,
+            ClientService,
+            CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

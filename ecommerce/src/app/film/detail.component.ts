@@ -18,7 +18,6 @@ export class DetailComponent implements OnInit {
     }
 
 
-
  public detailFilm() : void {
      this.idFilm = this._route.snapshot.params['idFilm'];
    this._detailService.rechercherFilmId(this.idFilm)

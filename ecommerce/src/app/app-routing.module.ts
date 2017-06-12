@@ -11,7 +11,7 @@ import { FilmsTitreComponent } from "app/film/filmsTitre.component";
 import { FilmsActeurComponent } from "app/film/filmsActeur.component";
 
 export const appRoutes: Routes = [
-    {path: '', redirectTo: '/acceuil', pathMatch: 'full'},
+    {path: '', redirectTo: '/list', pathMatch: 'full'},
     {path: 'list', component: FilmComponent},
     {path: 'login', component: AuthentificationComponent},
     {path: 'inscription', component: InscriptionComponent},

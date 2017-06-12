@@ -10,6 +10,6 @@ export class Panier {
    prix : number =0) {
      this.film=film;
      this.prix = prix;
-     this.quantite;
+     this.quantite = quantite;
   }
 }

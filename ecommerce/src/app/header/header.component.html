@@ -1,5 +1,5 @@
 <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <a  class="page-scroll" href="#"><img src="assets/logo.jpg" id="logoImg" alt=""/></a>
@@ -9,25 +9,6 @@
       <li class="active"><a href="#">Home</a></li>
       <li><a routerLink="/list">Films</a></li>
       <li><a href="#">Contact</a></li>
-    </ul>
-    <ul class="nav navbar-nav "  >
-<li>
-    <form class="navbar-form">
-     <div class="input-group ">
-        <select class="input-group-addon " #selectedItem>
-           <option *ngFor="let item of items" [value]="item.id">{{item.name}}</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search"  [(ngModel)]='searchKey' name="searchKey">
-        <div class="input-group-btn">
-          <button class="btn btn-default" (click)="onTitle(selectedItem.value, searchKey)">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-</li>
     </ul>
 <ul class="nav navbar-nav navbar-right" [hidden]=" clientOk ==true" >
  <li>
@@ -57,25 +38,25 @@
   </div>
     </nav>
   
+  -->
   
   
   
-<!--  
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">-->
+        <div class="container-fluid">
              <!--Brand and toggle get grouped for better mobile display -->
-            <!--<div class="navbar-header">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar">ggg</span>
                     <span class="icon-bar">gg</span>
                 </button>
                        <a class="page-scroll" href="#services"><img   src="assets/logo.jpg" id="logoImg" alt=""/></a>-->
-                <!--<a class="navbar-brand" href="#">Start Bootstrap</a>-->
-            <!--</div>-->
+             
+            </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-<!--        
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+       
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="#">About</a>
@@ -86,8 +67,8 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                </ul>-->
-                <!--<ul class="nav navbar-nav navbar-right" [hidden]=" clientOk == true" >
+                </ul>
+                <ul class="nav navbar-nav navbar-right" [hidden]=" clientOk == true" >
                     <li>
                         <a  class="page-scroll" routerLink="/inscription">registration</a>
                     </li>
@@ -110,11 +91,11 @@
                     </li>
                 </ul>      
                  
-            </div>-->
+            </div>
             <!-- /.navbar-collapse -->
             
             
 
-        <!--</div>-->
+        </div>
         <!-- /.container -->
-    <!--</nav>-->
+    </nav>

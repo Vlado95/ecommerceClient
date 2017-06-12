@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from "app/model/client";
 import { Router } from "@angular/router";
+import { CommonService } from "app/services/common.servce";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   clientOk : boolean = false;
+   clientOk : boolean ;
    PrenomClient : string ="";
    client : Client;
 
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
     {id:2,name:'Acteur'},
   ];
  
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _commonService : CommonService) {
+    //this.clientOk = JSON.parse(localStorage.getItem("clientOk"));
   }
 
    
@@ -24,7 +26,8 @@ export class HeaderComponent implements OnInit {
    onDeconnection(){
      if(localStorage.getItem("clientConnecte")){
           localStorage.removeItem("clientConnecte");
-          this.clientOk == false;
+          localStorage.removeItem("clientOk");
+          this._commonService.onClientConnecte.next(false);
           let link = ['/login'];
           this._router.navigate( link );
         }}
@@ -44,9 +47,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = new Client();
+    if(localStorage.getItem("clientOk")){
+    this.clientOk = JSON.parse(localStorage.getItem("clientOk"));
+     console.log("clientOK en header: "+this.clientOk)
+    }
     if(localStorage.getItem("clientConnecte")){
       this.client=JSON.parse(localStorage.getItem("clientConnecte"));
-      this.clientOk = true;
+      
       console.log("client en header: "+this.client.prenom)
 
     }
