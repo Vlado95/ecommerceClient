@@ -27,14 +27,12 @@ export class CategorieService{
       return this._http.get(urlWS).map(response=> response.json())
                        .catch(e => Observable.throw('error:'+e));
     }
-
+   
     public rechercherFimsParCategorie(idGenre: number) : Observable<Film[]>{
       let urlWS : string =
        "http://localhost:8080/ECommerce/services/rest/genres/films/"+idGenre; 
       return this._http.get(urlWS).map(response=> response.json())
                        .catch(e => Observable.throw('error:'+e));
     }
-   
-
 }
 
