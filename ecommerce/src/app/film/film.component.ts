@@ -5,6 +5,7 @@ import { DetailService } from "app/services/detail.service";
 import { Router } from "@angular/router";
 import { CommonService } from "app/services/common.servce";
 import { Panier } from "app/model/panier";
+import { PanierService } from "app/services/panier.service";
 
 @Component({
   selector: 'app-film',
@@ -18,7 +19,8 @@ export class FilmComponent {
   paniers : Panier[];
   panier : Panier;
 
-
+total :number = 0;
+quantiLig : number;
 
 /// pour panier
   public listeFilmsRef2 : Film[];
@@ -28,7 +30,13 @@ i : number =0;
 
 
   selectedID : number;
-  constructor(private _filmService : FilmService, private _detailService : DetailService, private _router : Router,private _commonService : CommonService){
+  constructor(private _filmService : FilmService, private _detailService : DetailService, private _router : Router,private _panierService : PanierService){
+  
+}
+
+  public onDetail(f:Film): void{
+          let link = ['/detail', f.id];
+          this._router.navigate( link );
   }
 
   ngOnInit(): void {
@@ -41,34 +49,48 @@ i : number =0;
         console.log("...update....");
     
     // panieer
-    this._commonService.listeFilmsbSubject.subscribe(
-          listeFilms => {this.listeFilmsRef2=listeFilms;
-          });
+    // this._panierService.listeFilmsbSubject.subscribe(
+    //       listeFilms => {this.listeFilmsRef2=listeFilms;
+    //       });
           
-        this._commonService.listePanierbSubject.subscribe(
-          listePaniers => {this.paniers=listePaniers;
-            });
+    //     this._panierService.listePanierbSubject.subscribe(
+    //       listePaniers => {this.paniers=listePaniers;
+    //         });
 
  }
+
+ 
+
+
+
+
 
 
 //panier
 public onAddPanier(f:Film) : void{
-  this.i++;
-  this._detailService.rechercherFilmId(f.id)
-    .subscribe(selectedFil => {this.sF= selectedFil; 
-      this.panier =new Panier(this.sF,1, this.sF.prix);
-    this.paniers.push(this.panier);
-  this.listeFilmsRef2.push(this.sF);
+  this._panierService.addItem(f)
+console.log("ajouter"+f.titre)
+  // this.i++;
+  // this._detailService.rechercherFilmId(f.id)
+  //   .subscribe(selectedFil => {this.sF= selectedFil; 
+  //     this.panier =new Panier(this.sF,1, this.sF.prix);
+  //   this.paniers.push(this.panier);
+    
+  //this.listeFilmsRef2.push(this.sF);
+  // this._commonService.storyInPanier(this.paniers,this.sF);
+  // this._commonService.storyInPanier2(this.paniers);
+ //this.total =  this._commonService.storyInPanier2(this.paniers)
+//localStorage.setItem("total",JSON.stringify(this.total))
+// localStorage.setItem("nbA",JSON.stringify( this.i))
+// localStorage.setItem("listePanierstest",JSON.stringify(this.paniers))
 
-
-//    localStorage.setItem("listePaniers",JSON.stringify(this.paniers))
+   //localStorage.setItem("listePanierEnSock",JSON.stringify(this.paniers))
 // let ListPANs : string= localStorage.getItem("listePaniers") ;
 //      //  console.log("à l'ajour "+JSON.parse(ListPANs).films);
 //        console.log("à l'ajour "+ListPANs.lastIndexOf("Baby Boss"));
 //       console.log("ajouter dans le panier i"+this.i);
     //  arr.map(function(row) { return stringle(row); });
-  });
+  // });
      
 
 

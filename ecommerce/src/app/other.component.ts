@@ -18,10 +18,10 @@ constructor(private _commonService : CommonService){
 }
 
 ngOnInit(): void {
-      this._commonService.listeFilmsbSubject.subscribe(
-          listeFilms => this.listeFilmsRef1=listeFilms);     
+    //   this._commonService.listeFilmsbSubject.subscribe(
+    //       listeFilms => this.listeFilmsRef1=listeFilms);     
         
-    }
+   }
 
 
 }

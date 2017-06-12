@@ -12,6 +12,10 @@ export class DetailComponent implements OnInit {
   sF : Film; 
   idFilm : number;
 
+ 
+  constructor(private _detailService : DetailService,private _route: ActivatedRoute){
+     
+    }
 
 
 
@@ -23,28 +27,9 @@ export class DetailComponent implements OnInit {
  }
 
 
- public onUpdateFilm() : void {
-   this._detailService.rechercherFilmId(this.sF)
-   .subscribe(filmMisAjour =>console.log("film mis a jour  " +filmMisAjour.titre+ " "+filmMisAjour.resume));
- }
-  constructor(private _detailService : DetailService,
-private _route: ActivatedRoute){
-  }
 
   ngOnInit(): void {
-this.idFilm = this._route.snapshot.params['idFilm'];
-this._detailService.rechercherFilmId(this.idFilm)
-   .subscribe(filmDetail => {this.sF = filmDetail}
-   );
+        this.detailFilm()
      }
-
-
-//this.idFilm = this._route.snapshot.params['idFilm'];
-// this._route.params.forEach((params: Params) => {
-// this.idFilm = Number(params['idFilm']); 
-//this.detailFilm(); il faut l'appelle
-// });
-
-
 
 }

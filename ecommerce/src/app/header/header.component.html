@@ -1,19 +1,81 @@
-    <!-- Navigation -->
+<!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a  class="page-scroll" href="#"><img src="assets/logo.jpg" id="logoImg" alt=""/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a routerLink="/list">Films</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <ul class="nav navbar-nav "  >
+<li>
+    <form class="navbar-form">
+     <div class="input-group ">
+        <select class="input-group-addon " #selectedItem>
+           <option *ngFor="let item of items" [value]="item.id">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"  [(ngModel)]='searchKey' name="searchKey">
+        <div class="input-group-btn">
+          <button class="btn btn-default" (click)="onTitle(selectedItem.value, searchKey)">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+</li>
+    </ul>
+<ul class="nav navbar-nav navbar-right" [hidden]=" clientOk ==true" >
+ <li>
+                        <a  class="page-scroll" routerLink="/inscription">registration</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Connexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul> 
+
+
+ 
+                 <ul class="nav navbar-nav navbar-right"  [hidden]=" clientOk == false">
+                    <li>
+                         <a  [hidden]=" clientOk == false" class="page-scroll" routerLink="#">{{client.prenom}}</a>
+                    <li>
+                        <a  [hidden]=" clientOk == false" class="page-scroll" (click)="onDeconnection()">deconnexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul>    
+  </div>
+  </div>
+    </nav>
+  
+  
+  
+  
+<!--  
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">-->
+             <!--Brand and toggle get grouped for better mobile display -->
+            <!--<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">ggg</span>
+                    <span class="icon-bar">gg</span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
-            </div>
+                       <a class="page-scroll" href="#services"><img   src="assets/logo.jpg" id="logoImg" alt=""/></a>-->
+                <!--<a class="navbar-brand" href="#">Start Bootstrap</a>-->
+            <!--</div>-->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-        
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+<!--        
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="#">About</a>
@@ -24,24 +86,35 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+                </ul>-->
+                <!--<ul class="nav navbar-nav navbar-right" [hidden]=" clientOk == true" >
                     <li>
-                        <a class="page-scroll" href="#about">registration</a>
+                        <a  class="page-scroll" routerLink="/inscription">registration</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">connection</a>
+                        <a class="page-scroll" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Connexion</a>
                     </li>
                     <li>
                         <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
                     </li>
-                </ul>     
+                </ul> 
+ 
+                 <ul class="nav navbar-nav navbar-right"  [hidden]=" clientOk == false">
+                    <li>
+                         <a  [hidden]=" clientOk == false" class="page-scroll" routerLink="#">{{client.prenom}}</a>
+                    <li>
+                        <a  [hidden]=" clientOk == false" class="page-scroll" (click)="onDeconnection()">deconnexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul>      
                  
-            </div>
+            </div>-->
             <!-- /.navbar-collapse -->
             
             
 
-        </div>
+        <!--</div>-->
         <!-- /.container -->
-    </nav>
+    <!--</nav>-->

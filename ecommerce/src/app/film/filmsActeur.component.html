@@ -1,7 +1,5 @@
-<br>
-
 <div class="row">
-     <div class="alert-danger">{{message}}</div>
+    <div class="alert-danger">{{message}}</div>
   <div  *ngFor="let f of films">
                       <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
@@ -10,7 +8,7 @@
                             <div class="caption">
                                 <h4 class="pull-right">${{f.prix}}</h4>
                                 <h4>{{f.titre}}</h4>
-                                <p><a (click)="onDetail(f)">Detail</a></p>
+                                <p><a [routerLink]="['/detail',f.id]">Detail</a></p>
 
                             </div>
 

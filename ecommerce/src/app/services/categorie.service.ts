@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { Categorie } from "../model/categorie";
+import { Film } from "app/model/film";
 
 
 @Injectable()
@@ -23,6 +24,13 @@ export class CategorieService{
       // return Observable.of(this.listeAuteurs);//simulation sans WS
       let urlWS : string =
        "http://localhost:8080/ECommerce/services/rest/genres/all"; 
+      return this._http.get(urlWS).map(response=> response.json())
+                       .catch(e => Observable.throw('error:'+e));
+    }
+
+    public rechercherFimsParCategorie(idGenre: number) : Observable<Film[]>{
+      let urlWS : string =
+       "http://localhost:8080/ECommerce/services/rest/genres/films/"+idGenre; 
       return this._http.get(urlWS).map(response=> response.json())
                        .catch(e => Observable.throw('error:'+e));
     }

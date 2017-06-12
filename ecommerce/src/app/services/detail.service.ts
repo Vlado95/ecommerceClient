@@ -16,7 +16,7 @@ export class DetailService {
 
      constructor(private _http : Http){
      }
-     public rechercherFilmId(f: any): Observable<Film>{
+     public rechercherFilmId(f: number): Observable<Film>{
         let urlWs :string = "http://localhost:8080/ECommerce/services/rest/films/"+ f;
        return this._http.get(urlWs).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));
      }

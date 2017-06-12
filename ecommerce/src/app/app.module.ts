@@ -18,6 +18,12 @@ import { OtherComponent } from "app/other.component";
 import { PanierService } from "app/services/panier.service";
 import { CommonService } from "app/services/common.servce";
 import { CategorieService } from "app/services/categorie.service";
+import { InscriptionComponent } from "app/client/inscripition.component";
+import { ClientService } from "app/services/client.service";
+import { AuthentificationComponent } from "app/client/login.component";
+import { FilmsGenreComponent } from "app/film/filmsGenre.component";
+import { FilmsTitreComponent } from "app/film/filmsTitre.component";
+import { FilmsActeurComponent } from "app/film/filmsActeur.component";
 
 
 @NgModule({
@@ -28,7 +34,12 @@ import { CategorieService } from "app/services/categorie.service";
     FilmComponent,
     DetailComponent,
     PanierComponent,
-    OtherComponent
+    OtherComponent,
+    InscriptionComponent,
+    AuthentificationComponent,
+    FilmsGenreComponent,
+    FilmsTitreComponent,
+    FilmsActeurComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,7 @@ import { CategorieService } from "app/services/categorie.service";
     AppRoutingModule
   ],
   providers: [FilmService,
-            DetailService, PanierService , CommonService, CategorieService ],
+            DetailService, PanierService, CategorieService ,ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

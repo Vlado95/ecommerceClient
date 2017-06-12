@@ -22,13 +22,16 @@ export class FilmService {
        return this._http.get(urlWs).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));
      }
 
-     /**
-      * majFilm
-      */
-     public majFilm(f: Film) : Observable<Film>{
-         let urlWs :string = "http://localhost:8080/ECommerce/services/rest/films/"+ f.id;
-          return this._http.put(urlWs, JSON.stringify(f), {headers: this._headers}).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));
+       public rechercherFilmsParTitle(title:String): Observable<Film[]>{
+       let  urlWs : string = "http://localhost:8080/ECommerce/services/rest/films/titlelike/"+title;
+       return this._http.get(urlWs).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));
      }
+
+      public rechercherFilmsParActeur(actKeyWork:String): Observable<Film[]>{
+       let  urlWs : string = "http://localhost:8080/ECommerce/services/rest/acteurs/films/actorLike/"+actKeyWork;
+       return this._http.get(urlWs).map(response=> response.json()).catch(e=> Observable.throw('error: '+e));
+     }
+     
 
 
 }

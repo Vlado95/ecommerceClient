@@ -1,45 +1,36 @@
-<div class="container">
+<div class="container  col-md-8">
     <div class="well row">
         <div class="page-header">
             <h3>Detail de panier</h3>
         </div>
-        <table class="table">
+        <!--<table class="table">
             <tr  *ngFor="let fil of listeFilmsRef1">
-                <!--<td>
-                   {{fil.id}}
-                </td>-->
-                <td>
-                   {{fil.titre}}
-                </td>
-                <td>
-                    {{fil.prix}}
-                </td>
+                <td>{{fil.titre}}</td>
+                <td>{{fil.prix}}</td>
             </tr>
             <tr>
-                <td>
-                    <b>Total:</b>
-                </td>
-                <td>
-                    <b>Rs. 25000</b>
-                </td>
+                <td><b>Total:</b></td>
+                <td><b>Rs. 25000</b> </td>
             </tr>
-        </table>
+        </table>-->
 
                 <table class="table">
-            <tr  *ngFor="let fil of  paniers2 ">
+            <tr  *ngFor="let panier of  paniers2">
                 <td>
-                 {{fil.id}}  
+                 {{panier.film.titre}}  
                 </td>
                 <td>
-                    {{fil.prix}}
+                   {{panier.prix}}
                 </td>
+                  <td>{{ panier.quantite }}</td>
+                <td>{{ panier.prix * panier.quantite }}</td>
             </tr>
             <tr>
                 <td>
                     <b>Total:</b>
                 </td>
                 <td>
-                    <b>Rs. 25000</b>
+                    <b>${{ total }}</b>
                 </td>
             </tr>
         </table>
