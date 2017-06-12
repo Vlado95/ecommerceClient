@@ -3,6 +3,8 @@ import { Panier } from "app/model/panier";
 import { CommonService } from "app/services/common.servce";
 import { Film } from "app/model/film";
 import { PanierService } from "app/services/panier.service";
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-panier',
@@ -18,9 +20,14 @@ export class PanierComponent implements OnInit {
     public panier2 : Panier;
     public total : number =0;
 
-constructor(private _panierService : PanierService){
+constructor(private _panierService : PanierService, private _router : Router){
     
 }
+
+public onPaye(): void{
+          let link = ['/paiement'];
+          this._router.navigate( link );
+  }
 
 ngOnInit(): void {
 

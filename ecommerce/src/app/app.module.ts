@@ -24,7 +24,9 @@ import { AuthentificationComponent } from "app/client/login.component";
 import { FilmsGenreComponent } from "app/film/filmsGenre.component";
 import { FilmsTitreComponent } from "app/film/filmsTitre.component";
 import { FilmsActeurComponent } from "app/film/filmsActeur.component";
-
+import { PaiementComponent } from "app/paiement/paiement.component";
+import { FooterComponent } from "app/footer/footer.component";
+import { AccueilComponent } from "app/header/accueil.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import { FilmsActeurComponent } from "app/film/filmsActeur.component";
     AuthentificationComponent,
     FilmsGenreComponent,
     FilmsTitreComponent,
-    FilmsActeurComponent
+    FilmsActeurComponent,
+    PaiementComponent,
+    FooterComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
