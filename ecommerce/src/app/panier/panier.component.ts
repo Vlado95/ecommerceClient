@@ -37,6 +37,8 @@ ngOnInit(): void {
   this._panierService.listePanierbSubject.subscribe(listesPaniers=>{
     this.paniers2=listesPaniers;
   //this.paniers2.forEach(lc=>{lc } )
+  this.total=this._panierService.getTotal(this.paniers2);
+  console.log("total"+  this.total)
   }
     )
 console.log("panier"+ JSON.stringify( this.paniers2))

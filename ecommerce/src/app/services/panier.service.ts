@@ -7,6 +7,7 @@ import 'rxjs/add/observable/of'; // // Observable class extensions
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { Commande } from "app/model/commande";
 
 @Injectable()
 export class PanierService{
@@ -15,17 +16,23 @@ public total : number = 0;
 //public quantite : number =0;
 public lignePanier : Panier;
 public ligneFilm : Film;
+public prixTotal :number;
 
 filmIn: boolean= true;
+
+public commande : Commande;
 //public lignecomandes: Map< number, Panier >;
 
-public 
-    public listeFilmsbSubject :BehaviorSubject<Film[]>
+ 
+ public listeFilmsbSubject :BehaviorSubject<Film[]>
              = new BehaviorSubject([]);  
 
     public listePanierbSubject :BehaviorSubject<Panier[]>
              = new BehaviorSubject([]);  
 
+
+    // public commandeSubject :BehaviorSubject<Commande>
+    //          = new BehaviorSubject(new Commande()); 
    /*
 public storyInPanier(paniers:Panier[],film:Film) {
   for (var i = 0; i < paniers.length; i++) {
@@ -108,13 +115,15 @@ public  storyInPanier2(filmsPanier:Panier[]){
 		return paniers.length;
 	}
 
+
+
 	public getTotal(paniers :Panier[]) {
 		let total = 0;
         paniers.forEach(panier =>{
-            total+= panier.prix*panier.quantite
+            total+= panier.prix;
 
         })
-		return this.total;
+		return total;
 	}
 
 	public  deleteItem(idFilm:number) : void {
@@ -138,10 +147,21 @@ public  storyInPanier2(filmsPanier:Panier[]){
          this.listePanierbSubject.next(panierReluDansStorage) ;   
        }
 
+       
+
        //this.listePanierbSubject.next(this.listePaniers)  ; [] par defaut
        this.listePanierbSubject.subscribe(paniers=>{
            localStorage.setItem('lcmd',JSON.stringify(paniers));
-           this.listePaniers =paniers;})                                            
+           this.listePaniers =paniers;
+           this.commande = new Commande();
+           this.commande.ligneCommandes= this.listePaniers;
+           if(localStorage.getItem("clientConnecte")){
+            this.commande.client=JSON.parse(localStorage.getItem("clientConnecte"))
+            this.commande.reference = JSON.stringify(this.commande.client.id+"/FILM")
+         }
+         this.commande.montantTotal = this.getTotal(this.listePaniers);
+
+        })                                            
 }
 
 }

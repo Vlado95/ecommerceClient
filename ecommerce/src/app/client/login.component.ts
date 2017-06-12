@@ -20,7 +20,6 @@ export class AuthentificationComponent {
 
     ngOnInit(): void { 
       this.client = new Client();
-      //this.errorMsg = "";
     }
 
     onConnect(): void {
@@ -30,7 +29,6 @@ export class AuthentificationComponent {
         if(clientConnecte){
           this._commonService.onClientConnecte.next(true);
           localStorage.setItem("clientConnecte",JSON.stringify(clientConnecte));
-         /// this._commonService.onOffbSubject.next(true);
           console.log("client ok on connection: "+JSON.parse(localStorage.getItem("clientOk")))
           let link = ['/list'];
           this._router.navigate( link );

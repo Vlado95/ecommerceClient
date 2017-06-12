@@ -15,7 +15,7 @@ import { AccueilComponent } from "app/header/accueil.component";
 
 
 export const appRoutes: Routes = [
-    {path: '', redirectTo: '/list', pathMatch: 'full'},
+    {path: '', redirectTo: '/accueil', pathMatch: 'full'},
     {path: 'list', component: FilmComponent},
     {path: 'login', component: AuthentificationComponent},
     {path: 'inscription', component: InscriptionComponent},

@@ -28,6 +28,7 @@ import { TitlePipe } from "app/pipes/title.filter";
 import { PaiementComponent } from "app/paiement/paiement.component";
 import { FooterComponent } from "app/footer/footer.component";
 import { AccueilComponent } from "app/header/accueil.component";
+import { CommandeComponent } from "app/paiement/commande.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AccueilComponent } from "app/header/accueil.component";
     TitlePipe,
     PaiementComponent,
     FooterComponent,
-    AccueilComponent
+    AccueilComponent,
+    CommandeComponent
   ],
   imports: [
     BrowserModule,
