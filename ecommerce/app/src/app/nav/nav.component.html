@@ -1,0 +1,10 @@
+<div class="col-md-3">
+_
+     <p class="lead">Genres </p>
+           <div class="list-group" >
+                  <div *ngFor="let c of categories" >
+                              <a  routerLink="/" (click)="onGenre(c)" class="list-group-item"> {{c.nom}}  </a>
+                  </div>
+          </div>
+</div>
+

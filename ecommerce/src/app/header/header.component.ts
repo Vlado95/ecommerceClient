@@ -48,7 +48,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.client = new Client();
     if(localStorage.getItem("clientOk")){
-    this.clientOk = JSON.parse(localStorage.getItem("clientOk"));
+  //  this.clientOk = JSON.parse(localStorage.getItem("clientOk"));
+  this._commonService.onClientConnecte.subscribe(ok=>this.clientOk=ok);
      console.log("clientOK en header: "+this.clientOk)
     }
     if(localStorage.getItem("clientConnecte")){

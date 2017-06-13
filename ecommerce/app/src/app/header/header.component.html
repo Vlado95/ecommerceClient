@@ -1,0 +1,101 @@
+<!-- Navigation -->
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header col-md-2">
+      <a  class="page-scroll" href="#"><img src="assets/logo.jpg" id="logoImg" alt=""/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 col-md-10">
+    <ul class="nav navbar-nav">
+      <li><a routerLink="/accueil">Home</a></li>
+      <li><a routerLink="/list">Films</a></li>
+      <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+<ul class="nav navbar-nav navbar-right" [hidden]=" clientOk ==true" >
+ <li>
+                        <a  class="page-scroll" routerLink="/inscription">registration</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Connexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul> 
+
+
+ 
+                 <ul class="nav navbar-nav navbar-right"  [hidden]=" clientOk == false">
+                    <li>
+                         <a  [hidden]=" clientOk == false" class="page-scroll" routerLink="#">{{client.prenom}}</a>
+                    <li>
+                        <a  [hidden]=" clientOk == false" class="page-scroll" (click)="onDeconnection()">deconnexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul>    
+  </div>
+  </div>
+    </nav>
+  
+  -->
+  
+  
+  
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+             <!--Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">ggg</span>
+                    <span class="icon-bar">gg</span>
+                </button>
+                       <a class="page-scroll" href="#services"><img   src="assets/logo.jpg" id="logoImg" alt=""/></a>-->
+             
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+       
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a routerLink="/accueil">About</a>
+                    </li>
+                     <li>
+                        <a routerLink="/list">Films</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" [hidden]=" clientOk == true" >
+                    <li>
+                        <a  class="page-scroll" routerLink="/inscription">registration</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>Connexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul> 
+ 
+                 <ul class="nav navbar-nav navbar-right"  [hidden]=" clientOk == false">
+                    <li>
+                         <a  [hidden]=" clientOk == false" class="page-scroll" routerLink="#">{{client.prenom}}</a>
+                    <li>
+                        <a  [hidden]=" clientOk == false" class="page-scroll" (click)="onDeconnection()">deconnexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" routerLink="/panier"><img   src="assets/panier.png" id="paniImg" alt=""/></a>
+                    </li>
+                </ul>      
+                 
+            </div>
+            <!-- /.navbar-collapse -->
+            
+            
+
+        </div>
+        <!-- /.container -->
+    </nav>

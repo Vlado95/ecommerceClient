@@ -8,7 +8,8 @@ export class Commande {
     fraisPort : number =2.50;
     montantTotal : number;
     delaisLivraison : number=6;
-    ligneCommandes: Panier[];
+    adresseLivraison : string="";
+    ligneCommandes : Panier[];
     reference : string;
     client : Client;
 

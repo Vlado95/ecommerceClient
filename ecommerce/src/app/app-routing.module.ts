@@ -12,10 +12,12 @@ import { FilmsActeurComponent } from "app/film/filmsActeur.component";
 import { PaiementComponent } from "app/paiement/paiement.component";
 import { FooterComponent } from "app/footer/footer.component";
 import { AccueilComponent } from "app/header/accueil.component";
+import { CommandeComponent } from "app/paiement/commande.component";
 
 
 export const appRoutes: Routes = [
     {path: '', redirectTo: '/accueil', pathMatch: 'full'},
+    {path: 'accueil', component: AccueilComponent},
     {path: 'list', component: FilmComponent},
     {path: 'login', component: AuthentificationComponent},
     {path: 'inscription', component: InscriptionComponent},
@@ -26,7 +28,7 @@ export const appRoutes: Routes = [
     {path: 'panier', component: PanierComponent},
     {path: 'paiement', component: PaiementComponent},
     {path: 'footer', component: FooterComponent},
-    {path: 'accueil', component: AccueilComponent},
+     {path: 'commande', component: CommandeComponent},
 ]
 @NgModule({
   imports: [

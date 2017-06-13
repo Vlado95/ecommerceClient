@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Commande } from "app/model/commande";
+import { Headers,Http,Response} from "@angular/http";
+
 
 @Injectable()
 export class PanierService{
@@ -18,12 +20,20 @@ public lignePanier : Panier;
 public ligneFilm : Film;
 public prixTotal :number;
 
+
 filmIn: boolean= true;
+
+
+
+private _headers = new Headers({'Content-Type': 'application/json'});
 
 public commande : Commande;
 //public lignecomandes: Map< number, Panier >;
 
- 
+ public pourcentagePromo :BehaviorSubject<number>
+             = new BehaviorSubject(0);  
+
+
  public listeFilmsbSubject :BehaviorSubject<Film[]>
              = new BehaviorSubject([]);  
 
@@ -31,30 +41,10 @@ public commande : Commande;
              = new BehaviorSubject([]);  
 
 
-    // public commandeSubject :BehaviorSubject<Commande>
-    //          = new BehaviorSubject(new Commande()); 
-   /*
-public storyInPanier(paniers:Panier[],film:Film) {
-  for (var i = 0; i < paniers.length; i++) {
-    if (paniers[i].film.id === film.id) {
-      console.log("film ok"+paniers[i].film.titre+",et"+film.titre)
-      return true;
-    }else{
-        console.log("ce film n'est pas dans le panier " + film.titre)
-    }
+    public commandeSubject :BehaviorSubject<Commande>
+             = new BehaviorSubject(new Commande()); 
 
-  }
-}
-
-public  storyInPanier2(filmsPanier:Panier[]){
-  for (var i = 0; i < filmsPanier.length; i++) {
-      this.total = this.total+filmsPanier[i].film.prix;
-       console.log("les films dans le panier " + filmsPanier[i].film.titre +"; prix d un film: "+filmsPanier[i].prix+" film; total = "+this.total);
-
-  }
-  return this.total;
-}*/
-
+    
  
 
  public addItem(film : Film) : void {
@@ -66,7 +56,11 @@ public  storyInPanier2(filmsPanier:Panier[]){
        this.listePaniers.forEach(lc=>{ 
                if(lc.film.id == film.id){
                 lc.quantite  += 1;
-                lc.prix = lc.quantite*film.prix;
+                this.pourcentagePromo.subscribe(pourcentage=>{
+                film.prix=this.getPromotion(film,pourcentage);
+                lc.prix = lc.quantite*film.prix;}
+                )
+                
                 this.filmIn=false;
                 //this.listePaniers[this.listePaniers.indexOf(lc)]=lc;
                  console.log("index du panier ajouter"+  this.listePaniers.indexOf(lc))
@@ -126,6 +120,17 @@ public  storyInPanier2(filmsPanier:Panier[]){
 		return total;
 	}
 
+    public getTva(pourcentage : number){
+        let tva = (this.getTotal(this.listePaniers)*pourcentage)/100;
+        return tva;
+    }
+
+
+    public getPromotion(film : Film, pourcentage :number){
+        let prixReduit = (film.prix*(100-pourcentage))/100
+        return prixReduit;
+    }
+
 	public  deleteItem(idFilm:number) : void {
 		//this.lignecomandes.delete(idFilm);
 	}
@@ -134,20 +139,30 @@ public  storyInPanier2(filmsPanier:Panier[]){
   public videPanie(){
       this.listePanierbSubject.subscribe(lignePaniers=>localStorage.removeItem('lcmd'))
     }
-//this.onClientConnecte.subscribe(clientOK=>{localStorage.setItem("clientOk", JSON.stringify(clientOK))
 
-   constructor(){ 
+
+
+
+
+    public enregistreCommande (commande : Commande) : Observable<Commande> {
+        let urlWs : string = "http://localhost:8080/ECommerce/services/rest/commandes/";
+        console.log("donnees envoyer  "+JSON.stringify(commande))
+        return this._http.post(urlWs, JSON.stringify(commande), {headers: this._headers}).map(response => response.json())
+                        .catch(e => Observable.throw('error: '+ e));  
+    }
+
+
+   constructor(private _http : Http){ 
+
        let panierReluDansStorage  ;
        try{
-       panierReluDansStorage =  JSON.parse(localStorage.getItem('lcmd'));
-    }
-    catch(e){ console.log("erreur relecture panier dans storage:" +e);
-    }
-       if(panierReluDansStorage){
-         this.listePanierbSubject.next(panierReluDansStorage) ;   
-       }
-
-       
+           panierReluDansStorage =  JSON.parse(localStorage.getItem('lcmd'));
+        }
+        catch(e){ console.log("erreur relecture panier dans storage:" +e);
+        }
+           if(panierReluDansStorage){
+             this.listePanierbSubject.next(panierReluDansStorage) ;   
+        }
 
        //this.listePanierbSubject.next(this.listePaniers)  ; [] par defaut
        this.listePanierbSubject.subscribe(paniers=>{
@@ -156,12 +171,25 @@ public  storyInPanier2(filmsPanier:Panier[]){
            this.commande = new Commande();
            this.commande.ligneCommandes= this.listePaniers;
            if(localStorage.getItem("clientConnecte")){
-            this.commande.client=JSON.parse(localStorage.getItem("clientConnecte"))
-            this.commande.reference = JSON.stringify(this.commande.client.id+"/FILM")
-         }
-         this.commande.montantTotal = this.getTotal(this.listePaniers);
+                this.commande.client=JSON.parse(localStorage.getItem("clientConnecte"));
+                this.commande.reference = JSON.stringify(this.commande.client.id+"/FILM");
+                this.commande.adresseLivraison = this.commande.client.adresse;
+              }
+            this.commande.montantTotal = this.getTotal(this.listePaniers)+this.commande.fraisPort
+            +this.getTva(2.5);
+            this.commandeSubject.next(this.commande);
+            // this.listePaniers.forEach(panier=>{
+            //     panier.commande=this.commande;
+            // }
 
-        })                                            
+            // )
+            localStorage.setItem("cmd",JSON.stringify(this.commande));
+
+        })
+
+          
+
+                                            
 }
 
 }

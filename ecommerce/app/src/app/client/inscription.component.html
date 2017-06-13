@@ -1,0 +1,51 @@
+<div class="container col-md-9">
+            <form  #inscription="ngForm"  class="form-horizontal"role="form">
+                <h2>Inscription</h2>
+                <div class="alert-danger">{{message}}</div>
+                <div class="form-group">
+                    <label for="nom" class="col-sm-3 control-label">Nom</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="client.nom" #nomIns="ngModel" name="nom" type="text"  placeholder="nom" class="form-control" autofocus required>
+                        <div class="alert alert-danger" [hidden]="nomIns.valid || nomIns.pristine">Champ invalide</div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="prenom" class="col-sm-3 control-label">Prenom</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="client.prenom" #prenIns="ngModel" type="text" name="prenom" placeholder="prenom" class="form-control" autofocus required>
+                        <div class="alert alert-danger" [hidden]="prenIns.valid || prenIns.pristine">Champ invalide</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="client.email" #emailIns="ngModel" type="email" name="email" placeholder="Email" class="form-control" required>
+                        <div class="alert alert-danger" [hidden]="emailIns.valid || emailIns.pristine">Champ invalide</div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mdp" class="col-sm-3 control-label">Mot de passe</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="client.mdp" #mdpIns="ngModel" type="password" name="mdp"   class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adresse" class="col-sm-3 control-label">Adresse</label>
+                    <div class="col-sm-9">
+                        <textarea  [(ngModel)]="client.adresse" #adresIns="ngModel" name="adresse" class="form-control" placeholder="Adresse commplet" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telephone" class="col-sm-3 control-label">Telephone</label>
+                    <div class="col-sm-9">
+                        <input type="text" [(ngModel)]="client.telephone" #telIns="ngModel" name="telephone" placeholder="Mot de passe" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button (click)="onSubmit()" [disabled]="!inscription.valid"   class="btn btn-primary btn-block">Enregistrer</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+</div> <!-- ./container -->

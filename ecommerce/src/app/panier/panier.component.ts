@@ -4,6 +4,7 @@ import { CommonService } from "app/services/common.servce";
 import { Film } from "app/model/film";
 import { PanierService } from "app/services/panier.service";
 import { Router } from "@angular/router";
+import { Commande } from "app/model/commande";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class PanierComponent implements OnInit {
     public  paniers2 : Panier[];
     public panier2 : Panier;
     public total : number =0;
+    public commandePan : Commande;
 
 constructor(private _panierService : PanierService, private _router : Router){
     
@@ -29,31 +31,23 @@ public onVidePanier() : void{
   this._panierService.videPanie()
 }
 public onPaye(): void{
-          let link = ['/paiement'];
+          let link = ['/commande'];
           this._router.navigate( link );
   }
 
 ngOnInit(): void {
   this._panierService.listePanierbSubject.subscribe(listesPaniers=>{
     this.paniers2=listesPaniers;
-  //this.paniers2.forEach(lc=>{lc } )
-  this.total=this._panierService.getTotal(this.paniers2);
-  console.log("total"+  this.total)
+   this.total=this._panierService.getTotal(this.paniers2);
   }
     )
-console.log("panier"+ JSON.stringify( this.paniers2))
+
+
+  this._panierService.commandeSubject.subscribe(commande=>{
+    this.commandePan=commande;
+
+  })
   }
-  // this.paniers2 = JSON.parse(localStorage.getItem('lcmd'));
-  //   }
-/*
-
-
-this._filmService.rechercherFilms()
-    .subscribe(listeFil => {this.films= listeFil;
-                            if(this.films.length >=1)
-                               this.sF = this.films[0] 
-                            },
-                 e=> console.log(e.message));
-*/
+ 
 
 }

@@ -20,7 +20,6 @@ export class InscriptionComponent {
 
     ngOnInit(): void { 
       this.client = new Client();
-      //this.errorMsg = "";
     }
 
     onSubmit(): void {

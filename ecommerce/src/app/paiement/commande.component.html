@@ -1,0 +1,54 @@
+<div class="container">
+  <form  #enregistrercommande="ngForm"  class="form-horizontal"role="form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Information complet</legend>
+
+<!-- Text input-->
+<div class="alert-danger">{{message}}</div>
+<div class="form-group">
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <h3> {{commandeEnv.client.prenom}}  {{commandeEnv.client.nom}} </h3>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <p>{{commandeEnv.client.adresse}}</p>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <p>{{commandeEnv.client.telephone}}</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Text area -->
+
+<div class="form-group">
+    <h4>Adresse de livraison</h4>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        	<textarea  [(ngModel)]="commandeEnv.adresseLivraison" #adresseLivraisonIns="ngModel" name="adresseLivraison"   class="form-control" class="form-control"  placeholder="entrer l'adresse de livraison'">{{commandeEnv.client.adresse}}</textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button (click)=" onRegister() " class="btn btn-warning" >Enregistrer la commande  <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+</fieldset>
+</form>
+</div>

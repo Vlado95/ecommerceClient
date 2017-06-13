@@ -3,18 +3,12 @@
         <div class="page-header">
             <h3>Detail de panier</h3>
         </div>
-        <!--<table class="table">
-            <tr  *ngFor="let fil of listeFilmsRef1">
-                <td>{{fil.titre}}</td>
-                <td>{{fil.prix}}</td>
-            </tr>
-            <tr>
-                <td><b>Total:</b></td>
-                <td><b>Rs. 25000</b> </td>
-            </tr>
-        </table>-->
+        <div class="container col-md-9">
+                        <div class="alert alert-danger" >Panier Vidé</div>
+        </div>
 
-                <table class="table">
+                
+            <table class="table" >
             <tr  *ngFor="let panier of  paniers2">
                 <td>
                  {{panier.film.titre}}  
@@ -22,15 +16,38 @@
                 <td>
                    {{panier.prix}}
                 </td>
-                  <td>{{ panier.quantite }}</td>
-                <td>{{ panier.prix * panier.quantite }}</td>
+                <td>{{ panier.quantite }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Total sans frais</b>
+                </td>
+                <td>
+                    <b>${{ total }}</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Frais de port:
+                </td>
+                <td>
+                    <b>${{ commandePan.fraisPort }}</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>TVA</b>
+                </td>
+                <td>
+                    <b>2.5%</b>
+                </td>
             </tr>
             <tr>
                 <td>
                     <b>Total:</b>
                 </td>
                 <td>
-                    <b>${{ total }}</b>
+                    <b>${{ commandePan.montantTotal }}</b>
                 </td>
             </tr>
         </table>
