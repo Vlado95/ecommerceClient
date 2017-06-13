@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="alert-danger">{{message}}</div>
+  <div  *ngFor="let f of films">
+                      <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                               <img   src="assets/{{f.affiche}}.jpg"  alt=""/>
+
+                            <div class="caption">
+                                <h4 class="pull-right">${{f.prix}}</h4>
+                                <h4>{{f.titre}}</h4>
+                                <p><a [routerLink]="['/detail',f.id]">Detail</a></p>
+
+                            </div>
+
+                        </div>
+                        <p class="text-center">
+                            <button  (click)="onAddPanier(f)" class="btn btn-danger">
+                                Ajouter <span class="glyphicon glyphicon-shopping-cart" ></span>
+                            </button>
+                    </div>
+</div>
+
+</div>
