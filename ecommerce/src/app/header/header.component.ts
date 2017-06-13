@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from "app/model/client";
 import { Router } from "@angular/router";
 import { CommonService } from "app/services/common.servce";
+import { PanierService } from "app/services/panier.service";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,13 +12,13 @@ export class HeaderComponent implements OnInit {
    clientOk : boolean ;
    PrenomClient : string ="";
    client : Client;
-
+ qt :number;
  items:any[] = [
     {id:1,name:'Titre'},
     {id:2,name:'Acteur'},
   ];
  
-  constructor(private _router: Router, private _commonService : CommonService) {
+  constructor(private _router: Router, private _commonService : CommonService,  private _pannierService : PanierService) {
     //this.clientOk = JSON.parse(localStorage.getItem("clientOk"));
   }
 
@@ -58,5 +59,7 @@ export class HeaderComponent implements OnInit {
       console.log("client en header: "+this.client.prenom)
 
     }
+
+    this._pannierService.quantiteProduit.subscribe(qt=>this.qt = qt)
   }
 }

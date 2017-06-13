@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Commande } from "app/model/commande";
 import { Headers,Http,Response} from "@angular/http";
+import { CommonService } from "app/services/common.servce";
 
 
 @Injectable()
@@ -20,6 +21,7 @@ public lignePanier : Panier;
 public ligneFilm : Film;
 public prixTotal :number;
 
+public qt : number =0;
 
 filmIn: boolean= true;
 
@@ -44,13 +46,16 @@ public commande : Commande;
     public commandeSubject :BehaviorSubject<Commande>
              = new BehaviorSubject(new Commande()); 
 
+    public quantiteProduit :BehaviorSubject<number>
+             = new BehaviorSubject(0); 
+
     
- 
 
  public addItem(film : Film) : void {
   //  localStorage.removeItem('lcmd');
      // this.listePaniers  = JSON.parse(localStorage.getItem('lcmd'));
-
+  this.qt++;
+  this.quantiteProduit.next(this.qt);
      if(this.listePaniers && this.listePaniers.length >=1 ){
 
        this.listePaniers.forEach(lc=>{ 
@@ -152,7 +157,7 @@ public commande : Commande;
     }
 
 
-   constructor(private _http : Http){ 
+   constructor(private _http : Http, _commonService : CommonService){ 
 
        let panierReluDansStorage  ;
        try{

@@ -22,9 +22,9 @@ constructor(private _panierService : PanierService, private _router : Router){
 
 public onRegister() :void {
        this._panierService.enregistreCommande(this.commandeEnv).subscribe(
-        cmd => {this._router.navigate(['/list']);  },
+        cmd => {this._router.navigate(['/paiement']);  },
                  e => { console.log(e.message); 
-                 this.message = "Inscription Echoué"
+                 this.message = "Enregistemend de commande echoué"
                  });
   }
 

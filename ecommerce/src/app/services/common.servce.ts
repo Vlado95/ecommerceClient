@@ -16,6 +16,8 @@ public total : number = 0;
     
     public listeFilmsbSubject :BehaviorSubject<Film[]>
              = new BehaviorSubject([]);  
+    
+ 
 
     public listePanierbSubject :BehaviorSubject<Panier[]>
              = new BehaviorSubject([]);  

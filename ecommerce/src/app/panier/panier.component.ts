@@ -28,7 +28,11 @@ constructor(private _panierService : PanierService, private _router : Router){
 
 
 public onVidePanier() : void{
+  
   this._panierService.videPanie()
+  this._panierService.quantiteProduit.next(0);
+  this._panierService.commandeSubject.next(new Commande())
+  this._panierService.listePanierbSubject.next( new Array<Panier>())
 }
 public onPaye(): void{
           let link = ['/commande'];
